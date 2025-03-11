@@ -1,26 +1,13 @@
-#include <QtCore>
-
-#include "mainwidget.h"
-#include "stacktrace.h"
+#include <QApplication>
+#include "manga_details_widget.h"
 
 int main(int argc, char *argv[])
 {
-    registerBacktraceHandlers();
-
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-
     QApplication app(argc, argv);
 
-    MainWidget mainwidget;
-
-    QApplication::setStyle("windows");
-    QFile stylesheetFile(":/eink.qss");
-    stylesheetFile.open(QFile::ReadOnly);
-    mainwidget.setStyleSheet(stylesheetFile.readAll());
-    stylesheetFile.close();
-
-    mainwidget.show();
+    // Główne okno z widokiem szczegółów mangi
+    MangaDetailsWidget w;
+    w.show();
 
     return app.exec();
 }
